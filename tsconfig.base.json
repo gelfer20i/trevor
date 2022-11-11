@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@trevor/server/services": ["libs/server/services/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

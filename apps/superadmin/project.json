@@ -1,0 +1,59 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/superadmin/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/superadmin",
+        "main": "apps/superadmin/src/main.ts",
+        "tsConfig": "apps/superadmin/tsconfig.app.json",
+        "assets": ["apps/superadmin/src/app/admin/components/dashboard.tsx"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/superadmin/src/environments/environment.ts",
+              "with": "apps/superadmin/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "superadmin:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "superadmin:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/superadmin/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/superadmin/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
