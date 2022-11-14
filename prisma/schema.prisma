@@ -16,12 +16,22 @@ enum UserStatus {
 
 model User {
   id        String   @id @default(cuid())
-  fullName  String
-  email     String
+  fullName  String?
+  email     String?
   status    UserStatus @default(ACTIVE)
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz(6)
+  chats     Chat[]
 
-  // table name in database
   @@map("users")
+}
+
+model Chat {
+  id        String      @id @default(cuid())
+  title     String
+  createdAt DateTime    @default(now()) @db.Timestamptz(6)
+  userId    String
+  user      User        @relation(fields: [userId], references: [id])
+
+  @@map("chats")
 }

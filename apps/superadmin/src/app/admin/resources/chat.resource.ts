@@ -3,16 +3,18 @@ import { ResourceWithOptions } from 'adminjs';
 import { Components } from '../components';
 import { getDmmf } from './config';
 
-export const CreateUserResource = (
+export const CreateChatResource = (
   prisma: PrismaService
 ): ResourceWithOptions => ({
-  resource: { model: getDmmf(prisma).modelMap.User, client: prisma },
+  resource: { model: getDmmf(prisma).modelMap.Chat, client: prisma },
   options: {
     navigation: { name: null },
-    listProperties: ['id', 'fullName', 'status', 'email'],
-    editProperties: ['email'],
+    listProperties: ['id', 'title', 'createdAt', 'user'],
+    editProperties: ['title'],
     actions: {
-      new: { isAccessible: false },
+      new: {
+        isAccessible: false,
+      },
       delete: {
         isAccessible: ({ currentAdmin }) =>
           currentAdmin ? currentAdmin.role === 'admin' : false,
@@ -27,12 +29,15 @@ export const CreateUserResource = (
       },
     },
     properties: {
-      email: {
+      title: {
         type: 'textarea',
-        components: {
-          show: Components.Textarea,
-        },
       },
+      // user: {
+      //   components: {
+      //     list: Components.UserList,
+      //     //     show: Components.UserList,
+      //   },
+      // },
     },
     sort: {
       sortBy: 'createdAt',

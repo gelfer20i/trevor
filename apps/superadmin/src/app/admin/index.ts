@@ -1,9 +1,10 @@
 import { Components, componentLoader } from './components';
 import { Database, Resource } from '@adminjs/prisma';
 import AdminJS, { AdminJSOptions } from 'adminjs';
-import {CreateUserResource } from './resources';
+import { CreateChatResource, CreateUserResource } from './resources';
 import { AdminModuleOptions } from '@adminjs/nestjs';
 import { PrismaService } from '@trevor/server/services';
+import { auth } from './auth';
 
 AdminJS.registerAdapter({ Database, Resource });
 
@@ -27,11 +28,12 @@ const generateAdminJSConfig = (prisma: PrismaService): AdminJSOptions => ({
       },
     },
   },
-  resources: [CreateUserResource(prisma)],
+  resources: [CreateUserResource(prisma), CreateChatResource(prisma)],
 });
 
 export const generateAdminModuleOptions = (
-  prisma: PrismaService,
+  prisma: PrismaService
 ): AdminModuleOptions => ({
   adminJsOptions: generateAdminJSConfig(prisma),
+  auth,
 });
