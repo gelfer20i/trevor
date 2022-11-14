@@ -9,7 +9,7 @@ export const CreateChatResource = (
   resource: { model: getDmmf(prisma).modelMap.Chat, client: prisma },
   options: {
     navigation: { name: null },
-    listProperties: ['id', 'title', 'createdAt'],
+    listProperties: ['title', 'createdAt'],
     editProperties: ['title'],
     actions: {
       new: {

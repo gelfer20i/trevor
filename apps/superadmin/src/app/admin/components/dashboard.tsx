@@ -1,5 +1,6 @@
 import { H1 } from '@adminjs/design-system';
 import styled from 'styled-components';
+import { BasePropertyProps } from 'adminjs';
 
 const Container = styled('div')`
   display: flex;
@@ -7,7 +8,8 @@ const Container = styled('div')`
   align-items: center;
 `;
 
-const Dashboard = () => {
+const Dashboard = (props: BasePropertyProps) => {
+  console.log(props);
   return (
     <Container>
       <H1 color="red">Custom Dashboard here</H1>
