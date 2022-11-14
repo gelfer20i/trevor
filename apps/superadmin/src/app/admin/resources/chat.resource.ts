@@ -9,11 +9,12 @@ export const CreateChatResource = (
   resource: { model: getDmmf(prisma).modelMap.Chat, client: prisma },
   options: {
     navigation: { name: null },
-    listProperties: ['id', 'title', 'createdAt', 'user'],
+    listProperties: ['id', 'title', 'createdAt'],
     editProperties: ['title'],
     actions: {
       new: {
-        isAccessible: false,
+        isAccessible: ({ currentAdmin }) =>
+          currentAdmin ? currentAdmin.role === 'admin' : false,
       },
       delete: {
         isAccessible: ({ currentAdmin }) =>

@@ -5,5 +5,3 @@ import textarea from '../apps/superadmin/src/app/admin/components/textarea'
 AdminJS.UserComponents.textarea = textarea
 import profile from '../apps/superadmin/src/app/admin/components/profile'
 AdminJS.UserComponents.profile = profile
-import userList from '../apps/superadmin/src/app/admin/components/user-list'
-AdminJS.UserComponents.userList = userList

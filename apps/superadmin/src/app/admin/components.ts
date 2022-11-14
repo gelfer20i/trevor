@@ -14,7 +14,6 @@ const Components = {
   Dashboard: componentLoader.add('dashboard', `${BASE}/dashboard`),
   Textarea: componentLoader.add('textarea', `${BASE}/textarea`),
   Profile: componentLoader.add('profile', `${BASE}/profile`),
-  UserList: componentLoader.add('userList', `${BASE}/user-list`),
   // other custom components here
 };
 

@@ -21,7 +21,6 @@ model User {
   status    UserStatus @default(ACTIVE)
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz(6)
-  chats     Chat[]
 
   @@map("users")
 }
@@ -30,8 +29,6 @@ model Chat {
   id        String      @id @default(cuid())
   title     String
   createdAt DateTime    @default(now()) @db.Timestamptz(6)
-  userId    String
-  user      User        @relation(fields: [userId], references: [id])
 
   @@map("chats")
 }

@@ -10,7 +10,7 @@ async function main() {
     where: { email },
   });
   if (!test) {
-    const user = await prisma.user.create({
+    await prisma.user.create({
       data: {
         email,
         fullName,
@@ -20,7 +20,6 @@ async function main() {
     await prisma.chat.create({
       data: {
         title: 'Chat 1',
-        userId: user.id,
       },
     });
   }

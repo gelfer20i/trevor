@@ -9,8 +9,8 @@ export const CreateUserResource = (
   resource: { model: getDmmf(prisma).modelMap.User, client: prisma },
   options: {
     navigation: { name: null },
-    listProperties: ['id', 'fullName', 'status', 'email'],
-    editProperties: ['email'],
+    listProperties: ['fullName', 'status', 'email'],
+    editProperties: ['email', 'fullName', 'status'],
     actions: {
       new: { isAccessible: false },
       delete: {
@@ -27,6 +27,12 @@ export const CreateUserResource = (
       },
     },
     properties: {
+      fullName: {
+        type: 'textarea',
+      },
+      status: {
+        type: 'string',
+      },
       email: {
         type: 'textarea',
         components: {

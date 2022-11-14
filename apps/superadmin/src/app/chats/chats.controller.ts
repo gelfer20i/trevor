@@ -6,18 +6,18 @@ import { ChatsService } from './chats.service';
 export class ChatsController {
   constructor(private chatsService: ChatsService) {}
 
-  // @Post()
-  // create(@Body() createChatItemDto: CreateChatItemDto) {
-  //   return this.chatsService.create(createChatItemDto);
-  // }
+  @Post()
+  async create(@Body() createChatItemDto: CreateChatItemDto) {
+    return await this.chatsService.create(createChatItemDto);
+  }
 
   @Get()
   findAll() {
     return this.chatsService.findAll();
   }
 
-  //   @Get(':id')
-  //   findOne(@Param('id') id: string) {
-  //     return this.chatsService.findOne(id);
-  //   }
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.chatsService.findOne(id);
+  }
 }
