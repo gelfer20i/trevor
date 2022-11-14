@@ -2,6 +2,7 @@ import React from 'react';
 import { H1, H3, Button, Label, Input, Icon, H6 } from '@adminjs/design-system';
 import styled from 'styled-components';
 import { BasePropertyProps, ApiClient } from 'adminjs';
+import axios from 'axios';
 
 const Container = styled('div')`
   display: flex;
@@ -26,6 +27,7 @@ const Profile = () => {
   const [loading, setLoading] = React.useState(false);
   const [title, setTitle] = React.useState('');
   const [error, setError] = React.useState(false);
+  const [message, setMessage] = React.useState('');
 
   const handleView = (): void => {
     const api = new ApiClient();
@@ -45,6 +47,14 @@ const Profile = () => {
         setLoading(false);
         throw error;
       });
+  };
+
+  const getSomething = () => {
+    // or use process.env.LOCAL_HOST
+    fetch(`http://localhost:3333/api/chats/superadmin`)
+      .then((r) => r.json())
+      .then((m) => setMessage(m.message))
+      .catch((e) => console.log(e));
   };
 
   const handleAdd = (): void => {
@@ -104,6 +114,12 @@ const Profile = () => {
         </Button>
       </Canvas>
       {error && <H3 color="red">Error: Field is empty...</H3>}
+      <Canvas>
+        {message && <H3 color="red">{message}</H3>}
+        <Button variant="primary" size="lg" onClick={getSomething}>
+          Get message from endpoint that superadmin is serving...
+        </Button>
+      </Canvas>
     </Container>
   );
 };

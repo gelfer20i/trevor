@@ -11,6 +11,11 @@ export class ChatsController {
     return await this.chatsService.create(createChatItemDto);
   }
 
+  @Get('/superadmin')
+  getData() {
+    return this.chatsService.getData();
+  }
+
   @Get()
   findAll() {
     return this.chatsService.findAll();

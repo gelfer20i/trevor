@@ -30,4 +30,8 @@ export class ChatsService {
       },
     });
   }
+
+  getData(): { message: string } {
+    return { message: 'Message from endpoint' };
+  }
 }
