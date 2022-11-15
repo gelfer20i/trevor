@@ -2,7 +2,7 @@ FROM public.ecr.aws/bitnami/node:16
 COPY dist/apps/superadmin/ .
 COPY dist/libs/ .
 RUN npm install --omit=dev
-RUN npm install reflect-metadata tslib rxjs @nestjs/platform-express
+RUN npm install reflect-metadata tslib rxjs @nestjs/platform-express @adminjs/express
 
 COPY prisma ./prisma
 RUN npx prisma generate
