@@ -1,8 +1,7 @@
 import React from 'react';
 import { H1, H3, Button, Label, Input, Icon, H6 } from '@adminjs/design-system';
 import styled from 'styled-components';
-import { BasePropertyProps, ApiClient } from 'adminjs';
-import axios from 'axios';
+import { ApiClient } from 'adminjs';
 
 const Container = styled('div')`
   display: flex;

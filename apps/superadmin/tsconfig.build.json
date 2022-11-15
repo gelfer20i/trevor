@@ -5,6 +5,6 @@
     "test",
     "dist",
     "**/*spec.ts",
-    "src/admin/components/*.tsx"
+    "src/app/admin/components/*.tsx"
   ]
 }

@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  superadmin:
+    image: superadmin
+    build:
+      dockerfile: ./apps/superadmin/Dockerfile
+      context: ./
+    # Uncomment to test build locally:
+    environment:
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:6432/${POSTGRES_DB}
+    ports:
+      - '3333:3333'

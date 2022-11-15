@@ -12,7 +12,20 @@
         "outputPath": "dist/apps/superadmin",
         "main": "apps/superadmin/src/main.ts",
         "tsConfig": "apps/superadmin/tsconfig.app.json",
-        "assets": ["apps/superadmin/src/app/admin/components/dashboard.tsx"]
+        "assets": [
+          {
+            "glob": "*.tsx",
+            "input": "apps/superadmin/src/app/admin/components/",
+            "ignore": [],
+            "output": "components"
+          },
+          {
+            "input": "apps/superadmin",
+            "glob": "*.sh",
+            "output": "."
+          }
+        ],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {

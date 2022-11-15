@@ -7,8 +7,10 @@ const componentLoader = new ComponentLoader();
 // adminjs can't detect the correct path to the component files
 // it should be just... add("someName", "./components/dashboard")
 // but for nx, that would fail
-const BASE =
-  '../../../../../../../../../../apps/superadmin/src/app/admin/components';
+
+// const BASE =
+//   '../../../../../../../../../../apps/superadmin/src/app/admin/components';
+const BASE = './components';
 
 const Components = {
   Dashboard: componentLoader.add('dashboard', `${BASE}/dashboard`),

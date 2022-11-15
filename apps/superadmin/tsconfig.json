@@ -12,7 +12,7 @@
     "declaration": true
   },
   "files": [],
-  "include": ["./src/app/admin/**/*.tsx"],
+  "include": ["./src/app/admin/components/*.tsx"],
   "references": [
     {
       "path": "./tsconfig.app.json"
